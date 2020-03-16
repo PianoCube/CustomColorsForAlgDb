@@ -3,32 +3,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>CustomColorsForAlgDb</title>
 </head>
 <body>
     <div>
-        <input type="color" id=yellow value="#FEFE00" onchange="updateOutput()">
-        <input type="color" id=red value="#EE0000" onchange="updateOutput()">
-        <input type="color" id=blue value="#0000F2" onchange="updateOutput()">
-        <input type="color" id=white value="#FFFFFF" onchange="updateOutput()">
-        <input type="color" id=orange value="#FFA100" onchange="updateOutput()">
-        <input type="color" id=green value="#00D800" onchange="updateOutput()">
+        <table>
+            <tr>
+                <td style="width:50px;">Top:</td>
+                <td><input type="color" id=top value="#FEFE00" onchange="updateOutput()"></td>
+                <td style="padding-left: 5px;">Bottom:</td>
+                <td><input type="color" id=bottom value="#FFFFFF" onchange="updateOutput()"></td>
+            </tr>
+            <tr>
+                <td>Right:</td>
+                <td><input type="color" id=right value="#EE0000" onchange="updateOutput()"></td>
+                <td style="width:55px; padding-left: 5px;">Left:</td>
+                <td><input type="color" id=left value="#FFA100" onchange="updateOutput()"></td>
+            </tr>
+            <tr>
+                <td>Front:</td>
+                <td><input type="color" id=front value="#0000F2" onchange="updateOutput()"></td>
+                <td style="width:55px; padding-left: 5px;">Back:</td>
+                <td><input type="color" id=back value="#00D800" onchange="updateOutput()"></td>
+            </tr>
+        </table>
     </div>
 
-
-    <div id=bookmarkOutput><xmp>javascript:(function(){(function(){for(var e=document.getElementsByTagName("img"),n=0;n<e.length;n++)e[n].src=e[n].src.replace("view=","scheme=FEFE00-EE0000-0000F2-FFFFFF-FFA100-00D800&view=")})()})();</xmp></e.length></div>
-
+    <img id=img style="max-width: 256px;" src="http://cubiclealgdbimagegen.azurewebsites.net/generator?puzzle=three&view=plan&scheme=FEFE00-EE0000-0000F2-FFFFFF-FFA100-00D800&nocache=true" alt="Something went wrong with the image">
+    <br>
+    
+    <button onclick="copyToClipboard()">Copy to clipboard</button> <span id="copyTxt" style="color: rgb(60, 60, 60);"></span> <br>
+    <input id="bookmarkOutput" type="text" readonly style="width: 256px;" value='javascript:(function(){(function(){for(var e=document.getElementsByTagName("img"),n=0;n<e.length;n++)e[n].src=e[n].src.replace("view=","scheme=FEFE00-EE0000-0000F2-FFFFFF-FFA100-00D800&view=")})()})();''>
+    
     <script>
         function updateOutput(){
-            var yellow = document.getElementById("yellow").value.replace('#','');
-            var red = document.getElementById("red").value.replace('#','');
-            var blue = document.getElementById("blue").value.replace('#','');
-            var white = document.getElementById("white").value.replace('#','');
-            var orange = document.getElementById("orange").value.replace('#','');
-            var green = document.getElementById("green").value.replace('#','');
+            var top = document.getElementById("top").value.replace('#','');
+            var right = document.getElementById("right").value.replace('#','');
+            var front = document.getElementById("front").value.replace('#','');
+            var bottom = document.getElementById("bottom").value.replace('#','');
+            var left = document.getElementById("left").value.replace('#','');
+            var back = document.getElementById("back").value.replace('#','');
 
-            var output = `<xmp>javascript:(function(){(function(){for(var e=document.getElementsByTagName("img"),n=0;n<e.length;n++)e[n].src=e[n].src.replace("view=","scheme=${yellow}-${red}-${blue}-${white}-${orange}-${green}&view=")})()})();</xmp>`;
-            document.getElementById("bookmarkOutput").innerHTML = output;
+            var imgColors = `${top}-${right}-${front}-${bottom}-${left}-${back}`.toUpperCase();
+
+            var output = `javascript:(function(){(function(){for(var e=document.getElementsByTagName("img"),n=0;n<e.length;n++)e[n].src=e[n].src.replace("view=","scheme=${imgColors}&view=")})()})();`;
+            var imgSrc = `http://cubiclealgdbimagegen.azurewebsites.net/generator?puzzle=three&view=plan&scheme=${imgColors}&nocache=true]`;
+
+            document.getElementById("bookmarkOutput").value = output;
+            document.getElementById("img").src = imgSrc;
+        }
+
+        function copyToClipboard() {
+            var copyText = document.getElementById("bookmarkOutput");
+            var txt = copyText.value;
+
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+
+            document.execCommand("copy");
+
+            copyText.value = "";
+            copyText.value = txt;
+            document.getElementById("copyTxt").innerHTML = "Copied!";
         }
     </script>
 </body>
