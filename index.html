@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="color" id=yellow value="#FEFE00" onchange="updateOutput()">
+        <input type="color" id=red value="#EE0000" onchange="updateOutput()">
+        <input type="color" id=blue value="#0000F2" onchange="updateOutput()">
+        <input type="color" id=white value="#FFFFFF" onchange="updateOutput()">
+        <input type="color" id=orange value="#FFA100" onchange="updateOutput()">
+        <input type="color" id=green value="#00D800" onchange="updateOutput()">
+    </div>
+
+
+    <div id=bookmarkOutput><xmp>javascript:(function(){(function(){for(var e=document.getElementsByTagName("img"),n=0;n<e.length;n++)e[n].src=e[n].src.replace("view=","scheme=FEFE00-EE0000-0000F2-FFFFFF-FFA100-00D800&view=")})()})();</xmp></e.length></div>
+
+    <script>
+        function updateOutput(){
+            var yellow = document.getElementById("yellow").value;
+            var red = document.getElementById("red").value;
+            var blue = document.getElementById("blue").value;
+            var white = document.getElementById("white").value;
+            var orange = document.getElementById("orange").value;
+            var green = document.getElementById("green").value;
+
+            var output = `<xmp>javascript:(function(){(function(){for(var e=document.getElementsByTagName("img"),n=0;n<e.length;n++)e[n].src=e[n].src.replace("view=","scheme=${yellow}-${red}-${blue}-${white}-${orange}-${green}&view=")})()})();</xmp>`;
+            document.getElementById("bookmarkOutput").innerHTML = output;
+        }
+    </script>
+</body>
+</html>
