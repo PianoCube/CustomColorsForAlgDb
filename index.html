@@ -6,6 +6,10 @@
     <title>CustomColorsForAlgDb</title>
 
     <style>
+        #mainContent{
+            margin-left: 10px;
+        }
+
         .color{
             border-width: 0px;
             background-color: white;
@@ -13,43 +17,37 @@
             width: 45px;
         }
 
-        #bookmarkOutput, button{
+        #bookmarkOutput, #mainContent button{
             margin-bottom: 3px;
             padding-left: 5px;
-        }
-
-        #mainContent{
-            margin-left: 10px;
         }
     </style>
 </head>
 <body style="margin:0px;">
-    <div style="width: 100%; background-color: rgb(241, 241, 241);">
-        <a href="about.html"><div style="padding: 5px; background-color: rgb(202, 202, 202); width: 130px;">About/How to use</div></a>
+    <div id="header" style="width: 100%; height: 23px; background-color: rgb(240, 240, 240);">
+        <a href="about.html" style="padding: 5px; height:23px; background-color: rgb(210, 210, 210); width: 140px;">About/How to use</a>
     </div>
     <div id="mainContent">
-        <div>
-            <table>
-                <tr>
-                    <td style="width:45px;">Up:</td>
-                    <td><input class="color" type="color" id=up value="#FEFE00" onchange="updateOutput()"></td>
-                    <td style="width:45px; padding-left: 10px;">Down:</td>
-                    <td><input class="color" type="color" id=down value="#FFFFFF" onchange="updateOutput()"></td>
-                </tr>
-                <tr>
-                    <td>Left:</td>
-                    <td><input class="color" type="color" id=left value="#FFA100" onchange="updateOutput()"></td>
-                    <td style="padding-left: 10px;">Right:</td>
-                    <td><input class="color" type="color" id=right value="#EE0000" onchange="updateOutput()"></td>
-                </tr>
-                <tr>
-                    <td>Front:</td>
-                    <td><input class="color" type="color" id=front value="#0000F2" onchange="updateOutput()"></td>
-                    <td style="padding-left: 10px;">Back:</td>
-                    <td><input class="color" type="color" id=back value="#00D800" onchange="updateOutput()"></td>
-                </tr>
-            </table>
-        </div>
+        <table>
+            <tr>
+                <td style="width:45px;">Up:</td>
+                <td><input class="color" type="color" id=up value="#FEFE00" onchange="updateOutput()"></td>
+                <td style="width:45px; padding-left: 10px;">Down:</td>
+                <td><input class="color" type="color" id=down value="#FFFFFF" onchange="updateOutput()"></td>
+            </tr>
+            <tr>
+                <td>Left:</td>
+                <td><input class="color" type="color" id=left value="#FFA100" onchange="updateOutput()"></td>
+                <td style="padding-left: 10px;">Right:</td>
+                <td><input class="color" type="color" id=right value="#EE0000" onchange="updateOutput()"></td>
+            </tr>
+            <tr>
+                <td>Front:</td>
+                <td><input class="color" type="color" id=front value="#0000F2" onchange="updateOutput()"></td>
+                <td style="padding-left: 10px;">Back:</td>
+                <td><input class="color" type="color" id=back value="#00D800" onchange="updateOutput()"></td>
+            </tr>
+        </table>
         <br>
         <button onclick="copyToClipboard()">Copy to clipboard</button> <span id="copyTxt" style="color: rgb(60, 60, 60);"></span> <br>
         <input id="bookmarkOutput" type="text" readonly style="width: 256px;" value='javascript:(function(){(function(){for(var e=document.getElementsByTagName("img"),n=0;n<e.length;n++)e[n].src=e[n].src.replace("view=","scheme=FEFE00-EE0000-0000F2-FFFFFF-FFA100-00D800&view=")})()})();''>
