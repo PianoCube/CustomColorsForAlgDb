@@ -20,12 +20,12 @@
 
     <script>
         function updateOutput(){
-            var yellow = document.getElementById("yellow").value;
-            var red = document.getElementById("red").value;
-            var blue = document.getElementById("blue").value;
-            var white = document.getElementById("white").value;
-            var orange = document.getElementById("orange").value;
-            var green = document.getElementById("green").value;
+            var yellow = document.getElementById("yellow").value.replace('#','');
+            var red = document.getElementById("red").value.replace('#','');
+            var blue = document.getElementById("blue").value.replace('#','');
+            var white = document.getElementById("white").value.replace('#','');
+            var orange = document.getElementById("orange").value.replace('#','');
+            var green = document.getElementById("green").value.replace('#','');
 
             var output = `<xmp>javascript:(function(){(function(){for(var e=document.getElementsByTagName("img"),n=0;n<e.length;n++)e[n].src=e[n].src.replace("view=","scheme=${yellow}-${red}-${blue}-${white}-${orange}-${green}&view=")})()})();</xmp>`;
             document.getElementById("bookmarkOutput").innerHTML = output;
