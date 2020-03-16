@@ -15,10 +15,10 @@
                 <td><input type="color" id=bottom value="#FFFFFF" onchange="updateOutput()"></td>
             </tr>
             <tr>
-                <td>Right:</td>
-                <td><input type="color" id=right value="#EE0000" onchange="updateOutput()"></td>
                 <td style="width:55px; padding-left: 5px;">Left:</td>
                 <td><input type="color" id=left value="#FFA100" onchange="updateOutput()"></td>
+                <td>Right:</td>
+                <td><input type="color" id=right value="#EE0000" onchange="updateOutput()"></td>
             </tr>
             <tr>
                 <td>Front:</td>
@@ -29,7 +29,7 @@
         </table>
     </div>
 
-    <img id=img style="max-width: 256px;" src="http://cubiclealgdbimagegen.azurewebsites.net/generator?puzzle=three&view=plan&scheme=FEFE00-EE0000-0000F2-FFFFFF-FFA100-00D800&nocache=true" alt="Something went wrong with the image">
+    <img id=img style="max-width: 256px;" src="https://cubiclealgdbimagegen.azurewebsites.net/generator?puzzle=three&view=plan&scheme=FEFE00-EE0000-0000F2-FFFFFF-FFA100-00D800&nocache=true" alt="Something went wrong with the image">
     <br>
     
     <button onclick="copyToClipboard()">Copy to clipboard</button> <span id="copyTxt" style="color: rgb(60, 60, 60);"></span> <br>
@@ -47,7 +47,7 @@
             var imgColors = `${top}-${right}-${front}-${bottom}-${left}-${back}`.toUpperCase();
 
             var output = `javascript:(function(){(function(){for(var e=document.getElementsByTagName("img"),n=0;n<e.length;n++)e[n].src=e[n].src.replace("view=","scheme=${imgColors}&view=")})()})();`;
-            var imgSrc = `http://cubiclealgdbimagegen.azurewebsites.net/generator?puzzle=three&view=plan&scheme=${imgColors}&nocache=true]`;
+            var imgSrc = `https://cubiclealgdbimagegen.azurewebsites.net/generator?puzzle=three&view=plan&scheme=${imgColors}&nocache=true]`;
 
             document.getElementById("bookmarkOutput").value = output;
             document.getElementById("img").src = imgSrc;
